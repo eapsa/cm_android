@@ -25,7 +25,6 @@ class ChangeFragment : Fragment() {
         })
         val buttonUpdate = view.findViewById<Button>(R.id.buttonUpdate)
         buttonUpdate.setOnClickListener(View.OnClickListener {
-
             var result  = ""
             result = getArguments()?.getString("key").toString()
             var textView = view.findViewById<TextView>(R.id.editTextTextPersonName)
