@@ -1,5 +1,7 @@
 package com.example.hw2.cities
 
+import android.content.Context
+import android.view.Display
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,6 +9,7 @@ import android.widget.Button
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hw2.R
+
 
 class CitiesAdapter : RecyclerView.Adapter<CitiesAdapter.CitiesHolder>() {
     var data =  listOf<String>()
@@ -22,7 +25,9 @@ class CitiesAdapter : RecyclerView.Adapter<CitiesAdapter.CitiesHolder>() {
         val item = data[position]
         holder.city.text = item
         holder.city.setOnClickListener{
-                view : View -> view.findNavController().navigate(CitiesFragmentDirections.actionCitiesFragmentToForecastFragment(item))
+            if (holder.city.measuredWidth<500000){
+                    view : View -> view.findNavController().navigate(CitiesFragmentDirections.actionCitiesFragmentToForecastFragment(item))
+           }
         }
     }
 

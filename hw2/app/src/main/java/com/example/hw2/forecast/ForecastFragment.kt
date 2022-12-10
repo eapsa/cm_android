@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.window.layout.WindowMetricsCalculator
 import com.example.hw2.R
 
 class ForecastFragment : Fragment() {
@@ -13,8 +14,13 @@ class ForecastFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val args = ForecastFragmentArgs.fromBundle(requireArguments())
-        Toast.makeText(context, "City: ${args.cityName}", Toast.LENGTH_LONG).show()
+        val metrics = WindowMetricsCalculator.getOrCreate()
+            .computeCurrentWindowMetrics(requireActivity())
+        if(metrics.bounds.width() / resources.displayMetrics.density < 600) {
+            val args = ForecastFragmentArgs.fromBundle(requireArguments())
+            Toast.makeText(context, "City: ${args.cityName}", Toast.LENGTH_LONG).show()
+        }
+        Toast.makeText(context, "City: Aveiro", Toast.LENGTH_LONG).show()
         return inflater.inflate(R.layout.fragment_forecast, container, false)
     }
 }

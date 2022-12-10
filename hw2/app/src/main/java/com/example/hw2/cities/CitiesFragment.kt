@@ -16,7 +16,6 @@ class CitiesFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         val binding = DataBindingUtil.inflate<FragmentCitiesBinding>(inflater,
             R.layout.fragment_cities,container,false)
-
         val adapter = CitiesAdapter()
         binding.citiesList.adapter = adapter
         adapter.data = array
